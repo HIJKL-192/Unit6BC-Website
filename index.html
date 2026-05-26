@@ -1,0 +1,109 @@
+<link rel="stylesheet" href="style.css">
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Contact Form</title>
+  <style>
+    body {
+      font-family: Arial;
+      background-color: #f4f4f4;
+    }
+
+    form {
+      width: 400px;
+      margin: 50px auto;
+      padding: 20px;
+      background: white;
+      border-radius: 10px;
+    }
+
+    input, textarea, select, button {
+      width: 100%;
+      margin: 10px 0;
+      padding: 8px;
+    }
+
+    button {
+      background-color: blue;
+      color: white;
+      border: none;
+      cursor: pointer;
+    }
+  </style>
+</head>
+<body>
+
+<h2 style="text-align:center;">Contact Us</h2>
+
+<form id="contactForm">
+
+  <!-- Name -->
+  <label>Full Name:</label>
+  <input type="text" id="name" required>
+
+  <!-- Email -->
+  <label>Email:</label>
+  <input type="email" id="email" required>
+
+  <!-- Phone -->
+  <label>Phone Number:</label>
+  <input type="tel" id="phone">
+
+  <!-- Dropdown -->
+  <label>Reason for Contact:</label>
+  <select id="reason">
+    <option>General Inquiry</option>
+    <option>Support</option>
+    <option>Feedback</option>
+  </select>
+
+  <!-- Radio buttons -->
+  <label>Urgency:</label><br>
+  <input type="radio" name="urgency" value="Low"> Low
+  <input type="radio" name="urgency" value="Medium"> Medium
+  <input type="radio" name="urgency" value="High"> High
+
+  <!-- Checkbox -->
+  <br><br>
+  <input type="checkbox" id="subscribe">
+  <label>Subscribe to newsletter</label>
+
+  <!-- Message -->
+  <label>Message:</label>
+  <textarea id="message" rows="4" required></textarea>
+
+  <!-- Submit -->
+  <button type="submit">Submit</button>
+
+</form>
+
+<!-- Sound -->
+<audio id="submitSound">
+  <source src="success.mp3" type="audio/mpeg">
+</audio>
+''
+
+<script>
+  const form = document.getElementById("contactForm");
+  const sound = document.getElementById("submitSound");
+
+  form.addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    // Simple validation example
+    const name = document.getElementById("name").value;
+    if (name === "") {
+      alert("Please enter your name");
+      return;
+    }
+
+    sound.play(); // play sound
+    alert("Form submitted successfully!");
+
+    form.reset(); // clears form
+  });
+</script>
+
+</body>
+</html>
